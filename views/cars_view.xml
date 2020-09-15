@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+
+
+    		<record id="rental_menu_action" model="ir.actions.act_window">
+        		<field name="name">Cars</field>
+	        	<field name="res_model">cars.cars</field>
+        		<field name="view_type">form</field>
+        		<field name="view_mode">tree,form</field>
+	        	<field name="domain">[]</field>
+        		<field name="help" type="html">
+        	    		<p class="oe_view_nocontent_create">Rent Cars Here
+	            		</p>
+        		</field>
+		</record>
+
+		<record id = "cars_tree_view" model = "ir.ui.view">
+			<field name = "name">Cars Tree</field>
+			<field name = "model">cars.cars</field>
+			<field name = "arch" type = "xml">
+				<tree string = "Cars">
+					<field name = "code"/>
+					<field name = "model"/>
+					<field name = "status"/>
+					<field name = "contact"/>
+					<field name = "year"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id = "cars_free_view" model = "ir.ui.view">
+			<field name = "name">Cars Form</field>
+			<field name = "model">cars.cars</field>
+			<field name = "arch" type = "xml">
+				<form string = "Car">
+					<sheet>
+						<field name = "photo" widget = "image" class = "oe_left oe_avatar" />
+						<div class = "oe_title">
+							<h3>
+								<field name = "code"/>
+							</h3>
+						</div>
+						<group>
+							<group>
+								<field name = "code"/>
+								<field name = "contact"/>
+							</group>
+							<group>
+								<field name = "model"/>
+								<field name = "year"/>
+								<field name = "status"/>
+							</group>
+							<field name = "details"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+    		<menuitem id="rental_cars_menu"
+              	   	  name="Rental Cars"/>
+    		<menuitem id="cars_menu"
+              		  parent="rental_cars_menu"
+              		  name="Cars"
+              		  action="rental_menu_action"/>
+	</data>
+</odoo>
